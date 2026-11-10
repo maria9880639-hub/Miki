@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101014">
+  <title>Aniversário do Miki — Confirme sua presença!</title>
+  <style>
+    :root {
+      --red: #e32636;
+      --dark: #101014;
+      --ink: #191922;
+      --muted: #666674;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 12% 15%, rgba(227,38,54,.23), transparent 28%),
+        radial-gradient(circle at 88% 82%, rgba(115,40,160,.20), transparent 30%),
+        repeating-linear-gradient(135deg, #101014 0 18px, #14141b 18px 36px);
+      display: grid;
+      place-items: center;
+      padding: 24px 14px;
+    }
+    .page { width: min(100%, 560px); }
+    .hero {
+      text-align: center;
+      padding: 12px 16px 20px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: #fff;
+      background: var(--red);
+      border: 2px solid #fff;
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.8px;
+      transform: rotate(-2deg);
+    }
+    h1 {
+      margin: 16px 0 7px;
+      font-size: clamp(38px, 9vw, 58px);
+      line-height: .95;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 0 var(--red), 6px 6px 0 #000;
+      letter-spacing: -1.5px;
+    }
+    .hero p { margin: 12px 0 0; color: #d8d8e1; font-size: 16px; }
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+      color: var(--ink);
+      border: 5px solid var(--red);
+      border-radius: 24px;
+      padding: clamp(22px, 5vw, 34px);
+      box-shadow: 0 15px 0 rgba(0,0,0,.35);
+    }
+    .card::before, .card::after {
+      content: "✦";
+      position: absolute;
+      color: rgba(227,38,54,.12);
+      font-size: 110px;
+      pointer-events: none;
+    }
+    .card::before { top: -35px; right: 10px; }
+    .card::after { bottom: -55px; left: 5px; }
+    .card h2 { margin: 0 0 8px; font-size: 25px; text-align: center; }
+    .intro { text-align: center; color: var(--muted); margin: 0 0 24px; line-height: 1.5; }
+    form { position: relative; z-index: 1; }
+    label { display: block; font-weight: 800; margin: 16px 0 7px; }
+    input {
+      width: 100%;
+      border: 2px solid #d9d9e2;
+      border-radius: 12px;
+      padding: 14px 15px;
+      font-size: 16px;
+      color: var(--ink);
+      background: #fafafd;
+      outline: none;
+      transition: border .2s, box-shadow .2s;
+    }
+    input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(227,38,54,.13); }
+    .hint { color: var(--muted); font-size: 12px; margin: 6px 2px 0; }
+    button {
+      width: 100%;
+      margin-top: 24px;
+      border: 0;
+      border-radius: 14px;
+      padding: 16px 18px;
+      color: #fff;
+      background: #168b48;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 5px 0 #0d6031;
+      transition: transform .15s, filter .15s;
+    }
+    button:hover { filter: brightness(1.07); transform: translateY(-1px); }
+    button:active { transform: translateY(3px); box-shadow: 0 2px 0 #0d6031; }
+    .notice {
+      display: none;
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #fff2d7;
+      color: #694400;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .footer { text-align: center; color: #bdbdc8; font-size: 12px; margin: 20px 8px 0; line-height: 1.5; }
+    .hero-art { display: flex; justify-content: center; gap: 12px; margin-top: 17px; }
+    .symbol {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 25px; font-weight: 900;
+      border: 2px solid #fff; box-shadow: 0 4px 0 rgba(0,0,0,.35);
+    }
+    .spider { background: var(--red); }
+    .venom { background: #282832; color: #fff; }
+    @media (max-width: 380px) { .card { padding: 20px 16px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <span class="eyebrow">VOCÊ FOI CONVOCADO!</span>
+      <h1>Missão<br>aniversário</h1>
+      <p>O Miki vai completar <strong>10 anos</strong> e sua presença é muito especial!</p>
+      <div class="hero-art" aria-hidden="true">
+        <div class="symbol spider">✦</div>
+        <div class="symbol venom">V</div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Confirme sua presença</h2>
+      <p class="intro">Preencha os dados abaixo. Ao clicar no botão, sua confirmação será enviada pelo WhatsApp.</p>
+
+      <form id="rsvpForm">
+        <label for="nome">Nome do participante</label>
+        <input id="nome" name="nome" type="text" placeholder="Digite seu nome completo" maxlength="80" required>
+
+        <label for="codigo">Código do convite</label>
+        <input id="codigo" name="codigo" type="text" placeholder="Ex.: MIKI10" maxlength="30" required>
+
+        <label for="acompanhantes">Quantidade de acompanhantes</label>
+        <input id="acompanhantes" name="acompanhantes" type="number" min="0" max="20" value="0" required>
+        <p class="hint">Informe somente o número de pessoas que irão com você (não conte o participante).</p>
+
+        <button type="submit">Confirmar pelo WhatsApp</button>
+        <div class="notice" id="notice" role="status"></div>
+      </form>
+    </section>
+
+    <p class="footer">Prepare-se para uma aventura incrível! 🕸️<br>Festa do Miki • 10 anos</p>
+  </main>
+
+  <script>
+    const form = document.getElementById('rsvpForm');
+    const notice = document.getElementById('notice');
+    const whatsappNumber = '5538998617565';
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('nome').value.trim();
+      const codigo = document.getElementById('codigo').value.trim();
+      const acompanhantes = Number(document.getElementById('acompanhantes').value);
+
+      if (!nome || !codigo || !Number.isInteger(acompanhantes) || acompanhantes < 0 || acompanhantes > 20) {
+        notice.style.display = 'block';
+        notice.textContent = 'Confira os campos: informe nome, código do convite e um número de acompanhantes entre 0 e 20.';
+        return;
+      }
+
+      const mensagem =
+        'Olá! Quero confirmar minha presença no aniversário de 10 anos do Miki. 🎉\n\n' +
+        'Participante: ' + nome + '\n' +
+        'Código do convite: ' + codigo + '\n' +
+        'Quantidade de acompanhantes: ' + acompanhantes + '\n\n' +
+        'Obrigado(a)!';
+
+      const link = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(mensagem);
+      const novaAba = window.open(link, '_blank', 'noopener,noreferrer');
+
+      notice.style.display = 'block';
+      notice.textContent = novaAba
+        ? 'O WhatsApp foi aberto com sua mensagem pronta. Revise e toque em Enviar para concluir a confirmação.'
+        : 'Se o WhatsApp não abriu, permita pop-ups ou envie sua confirmação para o número 38 99861-7565.';
+    });
+  </script>
+</body>
+</html>
